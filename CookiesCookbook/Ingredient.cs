@@ -1,4 +1,6 @@
-﻿namespace CookiesCookbook;
+﻿using System.Runtime.InteropServices;
+
+namespace CookiesCookbook;
 
 public abstract class Ingredient
 {
@@ -7,8 +9,9 @@ public abstract class Ingredient
         Id = id;
         Name = name;
     }
-    public int Id { get; init; }
-    public string Name { get; init; }
+    public int Id { get; }
+    public string Name { get;}
     public virtual string PreparationInstructions => "Add to other ingredients.";
+    public override string ToString() => $"{Id}. {Name}";
 
 }

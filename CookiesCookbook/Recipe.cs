@@ -6,10 +6,35 @@ namespace CookiesCookbook
 {
     public class Recipe
     {
-        public Recipe(List<Ingredient> ingredients)
+        public Recipe(IEnumerable<Ingredient> ingredients)
         {
             Ingredients = ingredients;
         }
-        public List<Ingredient> Ingredients { get; }
+        //usiamo IEnumerable perchè List è rischioso, IEnumerable permette solo ciclare un elenco, List permette anche la modifica 
+        public IEnumerable<Ingredient> Ingredients { get; }
+
+        public List<string> ReturnRecipeIngredients()
+        {
+            List<string> recipeIngredientsIds = new List<string>();
+
+            foreach (var ingredient in Ingredients)
+            {
+                recipeIngredientsIds.Add(ingredient.Id.ToString());
+            }
+
+            return recipeIngredientsIds;
+        }
+
+        public override string ToString()
+        {
+            var steps = new List<string>();
+
+            foreach (var ingredient in Ingredients)
+            {
+                steps.Add($"{ingredient.Name} {ingredient.PreparationInstructions}");
+            }
+
+            return string.Join(Environment.NewLine, steps);
+        }
     }
 }
