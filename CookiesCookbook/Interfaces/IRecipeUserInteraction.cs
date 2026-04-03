@@ -7,4 +7,6 @@ public interface IRecipeUserInteraction
     //utilizziamo IEnumarable come best practice, in quanto interfaccia piu generica che puo comprendere anche array
     void PrintExistingRecipes(IEnumerable<Recipe> allRecipes);
     void PromptToCreateRecipe();
+
+    IEnumerable<Ingredient> ReadIngredientsFromUser();
 }

@@ -6,7 +6,7 @@ namespace CookiesCookbook.Ingredients
 {
     class CocoaPowder : Ingredient
     {
-        public CocoaPowder() : base(8, nameof(CocoaPowder))
+        public CocoaPowder() : base(8, nameof(CocoaPowder) + ".")
         {
         }
     }

@@ -7,7 +7,7 @@ namespace CookiesCookbook.Ingredients
 {
     class Cinnamon : Ingredient, IMeasurable
     {
-        public Cinnamon() : base(7, nameof(Cinnamon))
+        public Cinnamon() : base(7, nameof(Cinnamon) + ".")
         {
         }
 

@@ -7,7 +7,7 @@ namespace CookiesCookbook.Ingredients
 {
     class Cardamom : Ingredient, IMeasurable
     {
-        public Cardamom() : base(6, nameof(Cardamom))
+        public Cardamom() : base(6, nameof(Cardamom) + ".")
         {
         }
         public override string PreparationInstructions => $"{Measure()} {base.PreparationInstructions}";

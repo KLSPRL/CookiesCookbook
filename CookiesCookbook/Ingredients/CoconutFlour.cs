@@ -7,7 +7,7 @@ namespace CookiesCookbook.Ingredients
 {
     class CoconutFlour : Ingredient, ISiftable
     {
-        public CoconutFlour() : base(2, nameof(CoconutFlour))
+        public CoconutFlour() : base(2, nameof(CoconutFlour) + ".")
         {
         }
         public override string PreparationInstructions => $"{Sieve()} {base.PreparationInstructions}";

@@ -7,7 +7,7 @@ namespace CookiesCookbook.Ingredients
 {
     internal class Butter : Ingredient, IMeltable
     {
-        public Butter() : base(3, nameof(Butter))
+        public Butter() : base(3, nameof(Butter) + ".")
         {
         }
         public override string PreparationInstructions => $"{Melt()} {base.PreparationInstructions}";

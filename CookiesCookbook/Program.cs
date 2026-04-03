@@ -21,7 +21,7 @@ public class CookiesCookbookApp
         _recipeRepository = recipeRepository;
         _recipeUserInteraction = recipeConsoleUserInteraction;
     }
-    public void Run(string filePath) 
+    public void Run(string filePath)
     {
         //metodo per leggere le ricette
         var allRecipes = _recipeRepository.Read(filePath);
@@ -32,23 +32,23 @@ public class CookiesCookbookApp
         //richiesta utente creazione ricetta
         _recipeUserInteraction.PromptToCreateRecipe();
         //lettura ingredienti da parte utente
-        //var ingredients = _recipeUserInteraction.ReadIngredientsFromUser();
+        var ingredients = _recipeUserInteraction.ReadIngredientsFromUser();
 
-        //if (ingredients.count > 0)
-        //{
-        //    var recipe = new recipe(ingredients);
-        //    allrecipes.add(recipe);
-        //    _reciperepository.write(filepath, allrecipes);
+        if (ingredients.Count() > 0)
+        {
+            var recipe = new Recipe(ingredients);
+            allRecipes.Add(recipe);
+            //_recipeRepository.Write(filepath, allrecipes);
 
-        //    _recipeuserinteraction.showmessage("recipe added:");
-        //    _recipeuserinteraction.showmessage(recipe.tostring());
-        //}
-        //else
-        //{
-        //    _recipeuserinteraction.showmessage(
-        //        "no ingredients have been selected. " +
-        //        "recipe will not be saved.");
-        //}
+            _recipeUserInteraction.ShowMessage("Recipe added:");
+            _recipeUserInteraction.ShowMessage(recipe.ToString());
+        }
+        else
+        {
+            _recipeUserInteraction.ShowMessage(
+                "no ingredients have been selected. " +
+                "recipe will not be saved.");
+        }
 
         _recipeUserInteraction.Exit();
     }
@@ -113,9 +113,9 @@ Selecting ingredients for a new recipe
 
 //Console.ReadKey();
 ////se ho almeno una ricetta chiamo il metodo Printing existing recipes
-    
+
 //    /* Printing existing recipes:
-       
+
 
 //    */
 

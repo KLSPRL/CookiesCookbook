@@ -6,7 +6,7 @@ namespace CookiesCookbook.Ingredients
 {
     internal class Sugar : Ingredient
     {
-        public Sugar() : base(5, nameof(Sugar))
+        public Sugar() : base(5, nameof(Sugar) + ".")
         {
         }
     }

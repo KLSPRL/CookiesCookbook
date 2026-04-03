@@ -1,6 +1,5 @@
 ﻿using CookiesCookbook;
 using CookiesCookbook.Ingredients;
-using System.Collections.Concurrent;
 
 public class IngredientsRegister
 {
@@ -15,7 +14,22 @@ public class IngredientsRegister
         new CoconutFlour(),
         new Sugar()
     };
+    public Ingredient GetById(int id)
+    {
+        foreach (var ingredient in All)
+        {
+            if (ingredient.Id == id)
+            {
+                return ingredient;
+            }
+        }
+
+        return null;
+    }
 }
+
+
+
 
 public class RecipeConsoleUserInteraction : IRecipeUserInteraction
 {
@@ -24,6 +38,36 @@ public class RecipeConsoleUserInteraction : IRecipeUserInteraction
     public RecipeConsoleUserInteraction(IngredientsRegister ingredientsRegister)
     {
         _ingredientsRegister = ingredientsRegister;
+    }
+
+    public IEnumerable<Ingredient> ReadIngredientsFromUser()
+    {
+        bool shallStop = false;
+        var ingredients = new List<Ingredient>();
+
+        while (!shallStop)
+        {
+            Console.WriteLine("Add an ingredient by its ID, " + "or type anything else if finished.");
+
+            var userInput = Console.ReadLine();
+
+            if (int.TryParse(userInput, out int id))
+            {
+                var selectedIngredient = _ingredientsRegister.GetById(id);
+
+                if (selectedIngredient is not null)
+                {
+                    ingredients.Add(selectedIngredient);
+
+                }
+            }
+            else
+            {
+                shallStop = true;
+            }
+        }
+
+        return ingredients;
     }
     public void Exit()
     {
@@ -38,7 +82,7 @@ public class RecipeConsoleUserInteraction : IRecipeUserInteraction
             Console.WriteLine("Existing recipes are:\n");
             int counter = 1;
 
-            foreach(var recipe in allRecipes)
+            foreach (var recipe in allRecipes)
             {
                 Console.WriteLine($"*****{counter}*****");
                 Console.WriteLine(recipe);
