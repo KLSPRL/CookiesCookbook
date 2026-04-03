@@ -13,5 +13,6 @@ namespace CookiesCookbook.Ingredients
         public override string PreparationInstructions => $"{Melt()} {base.PreparationInstructions}";
 
         public string Melt() => "Melt on water bath.";
+
     }
 }
